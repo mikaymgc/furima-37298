@@ -7,13 +7,11 @@
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | nickname           | string | null: false               |
-| last-name          | string | null: false               |
-| first-name         | string | null: false               |
-| last-name-kana     | string | null: false               |
-| first-name-kana    | string | null: false               |
-| user_birth_date_y  | date   | null: false               |
-| user_birth_date_m  | date   | null: false               |
-| user_birth_date_d  | date   | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| user_birth_date    | date   | null: false               |
 
 ### Association
 
@@ -25,14 +23,14 @@
 
 | Column                   | Type       | Options                        |
 | ------------------------ | ---------- | ------------------------------ |
-| item-name                | string     | null: false                    |
-| item-info                | string     | null: false                    |
-| item-category            | text       | null: false                    |
-| item-status              | string     | null: false                    |
-| item-shipping-fee-status | string     | null: false                    |
-| item-prefecture          | string     | null: false                    |
-| item-scheduled-delivery  | string     | null: false                    |
-| item-price               | string     | null: false                    |
+| item_name                | string     | null: false                    |
+| item_info                | text       | null: false                    |
+| category_id              | integer    | null: false                    |
+| status_id                | integer    | null: false                    |
+| shipping_fee_status_id   | integer    | null: false                    |
+| prefecture_id            | integer    | null: false                    |
+| scheduled_delivery_id    | integer    | null: false                    |
+| price                    | integer    | null: false                    |
 | user                     | references | null: false, foreign_key: true |
 
 
@@ -63,9 +61,9 @@
 | prefecture   | string     | null: false,                   |
 | city         | string     | null: false,                   |
 | addresses    | string     | null: false,                   |
-| building     | string     | null: false,                   |
+| building     | string     |                                |
 | phone-number | string     | null: false,                   |
-| buy          | string     | null: false, foreign_key: true |
+| buy          | references | null: false, foreign_key: true |
 
 ### Association
 
