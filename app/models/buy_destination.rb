@@ -1,10 +1,11 @@
 class BuyDestination
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postcode, :prefecture_id, :city, :addresses, :building, :phone_number, :buy_id
+  attr_accessor :token, :user_id, :item_id, :postcode, :prefecture_id, :city, :addresses, :building, :phone_number, :buy_id
 
   # ここにバリデーションの処理を書く
 
   with_options presence: true do
+    validates :token
     validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Enter it as follows (e.g. 123-4567)"}
     validates :city
     validates :addresses
