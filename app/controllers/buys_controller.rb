@@ -1,13 +1,13 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, only: [:index, :create]
+
 
   def index
     @buy_destination = BuyDestination.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @buy_destination = BuyDestination.new(destination_params)
     if @buy_destination.valid?
       @buy_destination.save
@@ -19,8 +19,12 @@ class BuysController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def destination_params
-    params.permit(:postcode, :prefecture, :city, :addresses, :building, :phone_number).merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:buy_destination).permit(:postcode, :prefecture_id, :city, :addresses, :building, :phone_number).merge(user_id: current_user.id, item_id: @item.id)
   end
 
 end
