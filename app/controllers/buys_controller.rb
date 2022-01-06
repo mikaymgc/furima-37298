@@ -4,6 +4,7 @@ class BuysController < ApplicationController
 
 
   def index
+    redirect_to root_path if Buy.exists?(item_id: @item.id)
     @buy_destination = BuyDestination.new
   end
 
