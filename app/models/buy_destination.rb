@@ -1,6 +1,6 @@
 class BuyDestination
   include ActiveModel::Model
-  attr_accessor :token, :user_id, :item_id, :postcode, :prefecture_id, :city, :addresses, :building, :phone_number, :buy_id
+  attr_accessor :token, :user_id, :item_id, :postcode, :prefecture_id, :city, :addresses, :building, :phone_number
 
   # ここにバリデーションの処理を書く
 
