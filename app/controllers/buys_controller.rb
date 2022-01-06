@@ -3,8 +3,7 @@ class BuysController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    redirect_to root_path if @item.user_id == current_user.id
-    redirect_to root_path if Buy.exists?(item_id: @item.id)
+    redirect_to root_path if Buy.exists?(item_id: @item.id) || @item.user_id == current_user.id
     @buy_destination = BuyDestination.new
   end
 
